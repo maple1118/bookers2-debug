@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
+  	get :search, on: :collection
   end
   resources :books,only: [:index, :show, :edit, :create, :destroy, :update] do
     resource :favorites, only: [:create, :destroy]
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   end
   root 'homes#top'
   get 'home/about' => 'homes#about'
+  get '/search', to: 'searchs#search'
 end
